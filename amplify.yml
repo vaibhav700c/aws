@@ -1,22 +1,22 @@
 version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - cd neuro-career-fe
-        - echo "Installing frontend dependencies..."
-        - npm install -g pnpm
-        - pnpm install
-    build:
-      commands:
-        - cd neuro-career-fe
-        - echo "Building Next.js application..."
-        - pnpm build
-  artifacts:
-    baseDirectory: neuro-career-fe/out
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - neuro-career-fe/node_modules/**/*
-      - neuro-career-fe/.next/cache/**/*
+applications:
+  - appRoot: neuro-career-fe
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - echo "Installing frontend dependencies..."
+            - npm install -g pnpm
+            - pnpm install
+        build:
+          commands:
+            - echo "Building Next.js application..."
+            - pnpm build
+      artifacts:
+        baseDirectory: out
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - .next/cache/**/*
