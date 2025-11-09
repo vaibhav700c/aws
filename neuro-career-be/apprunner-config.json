@@ -1,0 +1,22 @@
+{
+  "serviceName": "neuro-career-backend",
+  "sourceConfiguration": {
+    "imageRepository": {
+      "imageIdentifier": "YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/neuro-career-backend:latest",
+      "imageConfiguration": {
+        "port": "8000",
+        "runtimeEnvironmentSecrets": {
+          "ASSEMBLYAI_API_KEY": "arn:aws:ssm:us-east-1:YOUR_ACCOUNT_ID:parameter/neuro-career/assemblyai-key",
+          "GEMINI_API_KEY": "arn:aws:ssm:us-east-1:YOUR_ACCOUNT_ID:parameter/neuro-career/gemini-key",
+          "ELEVENLABS_API_KEY": "arn:aws:ssm:us-east-1:YOUR_ACCOUNT_ID:parameter/neuro-career/elevenlabs-key"
+        }
+      },
+      "imageRepositoryType": "ECR"
+    },
+    "autoDeploymentsEnabled": true
+  },
+  "instanceConfiguration": {
+    "cpu": "0.25 vCPU",
+    "memory": "0.5 GB"
+  }
+}

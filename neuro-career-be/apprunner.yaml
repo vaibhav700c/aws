@@ -1,0 +1,22 @@
+version: 1
+runtime: python3.11
+build:
+  commands:
+    build:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+run:
+  runtime-version: "3.11"
+  command: uvicorn fastapi_server:app --host 0.0.0.0 --port 8000
+  network:
+    port: 8000
+    env:
+      - name: PORT
+        value: "8000"
+  env:
+    - name: ASSEMBLYAI_API_KEY
+      value-from: "arn:aws:ssm:us-east-1:YOUR_ACCOUNT_ID:parameter/neuro-career/assemblyai-key"
+    - name: GEMINI_API_KEY
+      value-from: "arn:aws:ssm:us-east-1:YOUR_ACCOUNT_ID:parameter/neuro-career/gemini-key"
+    - name: ELEVENLABS_API_KEY
+      value-from: "arn:aws:ssm:us-east-1:YOUR_ACCOUNT_ID:parameter/neuro-career/elevenlabs-key"
