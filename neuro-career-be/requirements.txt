@@ -3,6 +3,9 @@ fastapi==0.104.1
 uvicorn==0.24.0
 python-dotenv==1.0.0
 
+# AWS Lambda adapter
+mangum>=0.17.0
+
 # AI and ML
 google-generativeai>=0.3.2
 elevenlabs>=0.2.26
